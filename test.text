@@ -4,34 +4,35 @@
 
 Contract valid!
 Contract valid!
-Contract valid!
+Contract details invalid!
+Contract details invalid!
 Contract valid!
 
  Starting the miner...
 Contract valid!
-TRANSACTIONS: [{"fromAddress":"address1","toAddress":"seeward-address","amount":1008},{"fromAddress":"address3","toAddress":"seeward-address","amount":130},{"fromAddress":"address4","toAddress":"seeward-address","amount":77},{"fromAddress":null,"toAddress":"seeward-address","amount":103},{"fromAddress":null,"toAddress":"seeward-address","amount":100}]
-BLOCK MINED: 00008ebf3801901741cc59dca2d42e9ae370013dfe85a711d77e56bfc1eba840
+TRANSACTIONS: [{"fromAddress":"address1","toAddress":"seeward-address","amount":1008},{"fromAddress":"address3","toAddress":"seeward-address","amount":130},{},{"fromAddress":null,"toAddress":"seeward-address","amount":103},{"fromAddress":null,"toAddress":"seeward-address","amount":100}]
+BLOCK MINED: 00003e0efaf42b96a0d67667f80094d5db1a2c798264a783cf92cbfafdc8d50b
 Block successfully mined!
 1008
 130
-77
+undefined
 103
 100
 
-Balance of seeward is 1418
+Balance of seeward is 1341
 
  Starting the miner again...
 Contract valid!
 TRANSACTIONS: [{"fromAddress":null,"toAddress":"seeward-address","amount":100}]
-BLOCK MINED: 0000406d9f1771d4ff9974d0d75a0d37ee4d7229b7cfdbaf41b484d7c4887804
+BLOCK MINED: 0000cc3c86e8332064333e3c050cf88f0dcba1a52ea5627bfe8bbbbeeb883a77
 Block successfully mined!
 1008
 130
-77
+undefined
 103
 100
 100
 
-Balance of seeward is 1518
+Balance of seeward is 1441
 
- Chain...[object Object],[object Object],[object Object]
+ Chain...[{"previousHash":"0","timestamp":1483228800000,"transactions":[],"hash":"92f0d54e0d1af3bfa68b792b5300cd68c797d0737327ddfe6891965b992eb2ca","nonce":0},{"previousHash":"92f0d54e0d1af3bfa68b792b5300cd68c797d0737327ddfe6891965b992eb2ca","timestamp":1536320716722,"transactions":[{"fromAddress":"address1","toAddress":"seeward-address","amount":1008},{"fromAddress":"address3","toAddress":"seeward-address","amount":130},{},{"fromAddress":null,"toAddress":"seeward-address","amount":103},{"fromAddress":null,"toAddress":"seeward-address","amount":100}],"hash":"00003e0efaf42b96a0d67667f80094d5db1a2c798264a783cf92cbfafdc8d50b","nonce":41776},{"previousHash":"00003e0efaf42b96a0d67667f80094d5db1a2c798264a783cf92cbfafdc8d50b","timestamp":1536320718494,"transactions":[{"fromAddress":null,"toAddress":"seeward-address","amount":100}],"hash":"0000cc3c86e8332064333e3c050cf88f0dcba1a52ea5627bfe8bbbbeeb883a77","nonce":20679}]

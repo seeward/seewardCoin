@@ -121,24 +121,29 @@ class Blockchain {
   }
 }
 
-// an example contract 
+// an example contract - enforces all inputs
 const buyerContract = function( fromAddress,toAddress, amount){
+    
     if(!fromAddress || !toAddress || !amount){
-        console.log('Contract invalid!')
+        console.log('Contract details invalid!')
         return false;
+    } else {
+        console.log('Contract valid!')
+        return true
     }
-    console.log('Contract valid!')
-    return true
+
 }
 
-// another easy contract
+// another contract for rewards - allows empty fromAddress
 const easyContract = function( fromAddress,toAddress, amount){
     if(!toAddress || !amount){
-        console.log('Contract invalid!')
+        console.log('Contract details invalid!')
         return false;
+    } else {
+        console.log('Contract valid!')
+        return true
     }
-    console.log('Contract valid!')
-    return true
+
 }
 // create an instance of our chain
 let seewardCoin = new Blockchain();
@@ -146,7 +151,7 @@ let seewardCoin = new Blockchain();
 // throw some trxs into the chain
 seewardCoin.createTransaction(new Transaction('address1', 'seeward-address', 1008,buyerContract));
 seewardCoin.createTransaction(new Transaction('address3', 'seeward-address', 130));
-seewardCoin.createTransaction(new Transaction('address4', 'seeward-address', 77));
+seewardCoin.createTransaction(new Transaction(null , 'seeward-address', 77));
 seewardCoin.createTransaction(new Transaction( null, 'seeward-address', 103, easyContract));
 
 
@@ -161,4 +166,4 @@ seewardCoin.minePendingTransactions('seeward-address');
 
 console.log('\nBalance of seeward is', seewardCoin.getBalanceOfAddress('seeward-address'));
 
-console.log('\n Chain...' + seewardCoin.chain);
+console.log('\n Chain...' + JSON.stringify(seewardCoin.chain));
