@@ -1,13 +1,30 @@
 const SHA256 = require("crypto-js/sha256");
 
+// class to implement trasactions in the chain
 class Transaction {
-  constructor(fromAddress, toAddress, amount) {
-    this.fromAddress = fromAddress;
-    this.toAddress = toAddress;
-    this.amount = amount;
+  constructor(fromAddress, toAddress, amount, contract) {
+      if(!contract){
+        contract = buyerContract;
+      }
+      if(typeof contract === 'function') {
+        if(contract(fromAddress, toAddress, amount)){
+            this.fromAddress = fromAddress;
+            this.toAddress = toAddress;
+            this.amount = amount;
+        } else {
+            console.log('Contract details invalid!')
+            return null
+        }
+      } else {
+        console.log('Contract definition invalid!')
+        return null
+      }
+    
+
   }
 }
 
+// class to implement blocks in the chain
 class Block {
   constructor(timestamp, transactions, previousHash = '') {
     this.previousHash = previousHash;
@@ -31,7 +48,7 @@ class Block {
   }
 }
 
-
+// class to implement the chain
 class Blockchain {
   constructor() {
     this.chain = [this.createGenesisBlock()];
@@ -49,7 +66,7 @@ class Blockchain {
   }
 
   minePendingTransactions(miningRewardAddress) {
-    const rewardTx = new Transaction(null, miningRewardAddress, this.miningReward);
+    const rewardTx = new Transaction(null, miningRewardAddress, this.miningReward, easyContract);
     this.pendingTransactions.push(rewardTx);
 
     let block = new Block(Date.now(), this.pendingTransactions, this.getLatestBlock().hash);
@@ -57,8 +74,8 @@ class Blockchain {
 
     console.log('Block successfully mined!');
     this.chain.push(block);
-    console.log(this.chain);
-    console.log(this.pendingTransactions)
+    // console.log(this.chain);
+    // console.log(this.pendingTransactions)
     this.pendingTransactions = [];
   }
 
@@ -72,6 +89,7 @@ class Blockchain {
 
     for (const block of this.chain) {
       for (const trans of block.transactions) {
+          console.log(trans.amount)
         if (trans.fromAddress === address) {
           balance -= trans.amount;
         }
@@ -103,17 +121,36 @@ class Blockchain {
   }
 }
 
+// an example contract 
+const buyerContract = function( fromAddress,toAddress, amount){
+    if(!fromAddress || !toAddress || !amount){
+        console.log('Contract invalid!')
+        return false;
+    }
+    console.log('Contract valid!')
+    return true
+}
+
+// another easy contract
+const easyContract = function( fromAddress,toAddress, amount){
+    if(!toAddress || !amount){
+        console.log('Contract invalid!')
+        return false;
+    }
+    console.log('Contract valid!')
+    return true
+}
+// create an instance of our chain
 let seewardCoin = new Blockchain();
 
-
-seewardCoin.createTransaction(new Transaction('address1', 'seeward-address', 1008));
+// throw some trxs into the chain
+seewardCoin.createTransaction(new Transaction('address1', 'seeward-address', 1008,buyerContract));
 seewardCoin.createTransaction(new Transaction('address3', 'seeward-address', 130));
 seewardCoin.createTransaction(new Transaction('address4', 'seeward-address', 77));
-seewardCoin.createTransaction(new Transaction('address11', 'seeward-address', 103));
+seewardCoin.createTransaction(new Transaction( null, 'seeward-address', 103, easyContract));
 
 
-
-
+// see some actions
 console.log('\n Starting the miner...');
 seewardCoin.minePendingTransactions('seeward-address');
 
@@ -123,3 +160,5 @@ console.log('\n Starting the miner again...');
 seewardCoin.minePendingTransactions('seeward-address');
 
 console.log('\nBalance of seeward is', seewardCoin.getBalanceOfAddress('seeward-address'));
+
+console.log('\n Chain...' + seewardCoin.chain);
