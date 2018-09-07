@@ -1,0 +1,66 @@
+
+> seeward-coin@1.0.0 chain /Users/christianmccabe/development/blockChainTests
+> cd src && node main.js
+
+
+ Starting the miner...
+TRANSACTIONS: [{"fromAddress":"address1","toAddress":"seeward-address","amount":1008},{"fromAddress":"address3","toAddress":"seeward-address","amount":130},{"fromAddress":"address4","toAddress":"seeward-address","amount":77},{"fromAddress":"address11","toAddress":"seeward-address","amount":103},{"fromAddress":null,"toAddress":"seeward-address","amount":100}]
+BLOCK MINED: 0000eb38336d53e2bd77b7d2b6b49309b85dac359dcc207f6d3bb0349bdc2d93
+Block successfully mined!
+[ Block {
+    previousHash: '0',
+    timestamp: 1483228800000,
+    transactions: [],
+    hash: '92f0d54e0d1af3bfa68b792b5300cd68c797d0737327ddfe6891965b992eb2ca',
+    nonce: 0 },
+  Block {
+    previousHash: '92f0d54e0d1af3bfa68b792b5300cd68c797d0737327ddfe6891965b992eb2ca',
+    timestamp: 1536318743958,
+    transactions: [ [Object], [Object], [Object], [Object], [Object] ],
+    hash: '0000eb38336d53e2bd77b7d2b6b49309b85dac359dcc207f6d3bb0349bdc2d93',
+    nonce: 120364 } ]
+[ Transaction {
+    fromAddress: 'address1',
+    toAddress: 'seeward-address',
+    amount: 1008 },
+  Transaction {
+    fromAddress: 'address3',
+    toAddress: 'seeward-address',
+    amount: 130 },
+  Transaction {
+    fromAddress: 'address4',
+    toAddress: 'seeward-address',
+    amount: 77 },
+  Transaction {
+    fromAddress: 'address11',
+    toAddress: 'seeward-address',
+    amount: 103 },
+  Transaction { fromAddress: null, toAddress: 'seeward-address', amount: 100 } ]
+
+Balance of seeward is 1418
+
+ Starting the miner again...
+TRANSACTIONS: [{"fromAddress":null,"toAddress":"seeward-address","amount":100}]
+BLOCK MINED: 00007cf72c1d6095fdaa289cc1a121881e07209ac783778b2f96276f28770c9a
+Block successfully mined!
+[ Block {
+    previousHash: '0',
+    timestamp: 1483228800000,
+    transactions: [],
+    hash: '92f0d54e0d1af3bfa68b792b5300cd68c797d0737327ddfe6891965b992eb2ca',
+    nonce: 0 },
+  Block {
+    previousHash: '92f0d54e0d1af3bfa68b792b5300cd68c797d0737327ddfe6891965b992eb2ca',
+    timestamp: 1536318743958,
+    transactions: [ [Object], [Object], [Object], [Object], [Object] ],
+    hash: '0000eb38336d53e2bd77b7d2b6b49309b85dac359dcc207f6d3bb0349bdc2d93',
+    nonce: 120364 },
+  Block {
+    previousHash: '0000eb38336d53e2bd77b7d2b6b49309b85dac359dcc207f6d3bb0349bdc2d93',
+    timestamp: 1536318749468,
+    transactions: [ [Object] ],
+    hash: '00007cf72c1d6095fdaa289cc1a121881e07209ac783778b2f96276f28770c9a',
+    nonce: 13708 } ]
+[ Transaction { fromAddress: null, toAddress: 'seeward-address', amount: 100 } ]
+
+Balance of seeward is 1518
